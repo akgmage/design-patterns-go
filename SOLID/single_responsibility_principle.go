@@ -30,10 +30,11 @@ func (j *Journal) Stringify() string {
 }
 
 
-// breaks srp
+// breaks SRP
 
-func (j *Journal) save(filename string) {
+func (j *Journal) Save(filename string) {
 	_ = ioutil.WriteFile(filename, []byte(j.Stringify()), 0644)
+	// 0644 readable by all the user groups, but writable by the user only.
 }
 
 func (j *Journal) Load(filename string) {
@@ -43,6 +44,13 @@ func (j *Journal) Load(filename string) {
 func (j *Journal) LoadFromWeb(url *url.URL) {
 
 }
+
+// best way to do it without breaking SRP
+var lineSeparator = "\n"
+func SaveToFile(j *Journal, filename string) {
+	_ = ioutil.WriteFile(filename, []byte(strings.Join(j.entries, lineSeparator)), 0644)
+}
+
 
 func main() {
 
