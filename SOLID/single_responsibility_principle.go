@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"strings"
 )
 
@@ -25,6 +26,13 @@ func (j *Journal) RemoveEntry(index int) {
 
 func (j *Journal) Stringify() string {
 	return strings.Join(j.entries, "\n")
+}
+
+
+// breaks srp
+
+func (j *Journal) save(filename string) {
+	_ = ioutil.WriteFile(filename, []byte(j.Stringify()), 0644)
 }
 
 
