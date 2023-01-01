@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"strings"
 )
 
@@ -24,7 +23,7 @@ func (j *Journal) RemoveEntry(index int) {
 	j.entries = append(j.entries[:index], j.entries[index+1:]...)
 }
 
-func (j *Journal) String() string {
+func (j *Journal) Stringify() string {
 	return strings.Join(j.entries, "\n")
 }
 
