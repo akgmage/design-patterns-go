@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"io/ioutil"
+	"strings"
+)
 
 var entryCount = 0
 
@@ -19,6 +23,18 @@ func (j *Journal) RemoveEntry(index int) {
 	entryCount--
 	j.entries = append(j.entries[:index], j.entries[index+1:]...)
 }
+
+func (j *Journal) Stringify() string {
+	return strings.Join(j.entries, "\n")
+}
+
+
+// breaks srp
+
+func (j *Journal) save(filename string) {
+	_ = ioutil.WriteFile(filename, []byte(j.Stringify()), 0644)
+}
+
 
 func main() {
 
