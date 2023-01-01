@@ -63,5 +63,15 @@ func (p *Persistance) SaveToFile(j *Journal, filename string) {
 
 
 func main() {
+	j := Journal{}
+	j.AddEntry("I am happy.")
+	j.AddEntry("I ate a bug.")
+	fmt.Println(strings.Join(j.entries, "\n"))
 
+	// separate function
+	SaveToFile(&j, "journal.txt")
+
+	// persistance
+	p := Persistance{"\n"}
+	p.SaveToFile(&j, "journal2.txt")
 }
