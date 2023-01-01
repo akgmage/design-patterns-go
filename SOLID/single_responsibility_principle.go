@@ -51,6 +51,16 @@ func SaveToFile(j *Journal, filename string) {
 	_ = ioutil.WriteFile(filename, []byte(strings.Join(j.entries, lineSeparator)), 0644)
 }
 
+// make it work across different os
+type Persistance struct {
+	lineseparator string
+}
+
+func (p *Persistance) SaveToFile(j *Journal, filename string) {
+	_ = ioutil.WriteFile(filename, []byte(strings.Join(j.entries, p.lineseparator)), 0644)
+}
+
+
 
 func main() {
 
