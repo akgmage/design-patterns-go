@@ -15,6 +15,11 @@ func (j *Journal) AddEntry(text string) int {
 	return entryCount
 }
 
+func (j *Journal) RemoveEntry(index int) {
+	entryCount--
+	j.entries = append(j.entries[:index], j.entries[index+1:]...)
+}
+
 func main() {
 
 }
