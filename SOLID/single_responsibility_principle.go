@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"net/url"
 	"strings"
 )
 
@@ -35,6 +36,13 @@ func (j *Journal) save(filename string) {
 	_ = ioutil.WriteFile(filename, []byte(j.Stringify()), 0644)
 }
 
+func (j *Journal) Load(filename string) {
+
+}
+
+func (j *Journal) LoadFromWeb(url *url.URL) {
+
+}
 
 func main() {
 
