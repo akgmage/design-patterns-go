@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"net/url"
 	"strings"
 )
 
@@ -29,13 +30,48 @@ func (j *Journal) Stringify() string {
 }
 
 
-// breaks srp
+// breaks SRP
 
-func (j *Journal) save(filename string) {
+func (j *Journal) Save(filename string) {
 	_ = ioutil.WriteFile(filename, []byte(j.Stringify()), 0644)
+	// 0644 readable by all the user groups, but writable by the user only.
+}
+
+func (j *Journal) Load(filename string) {
+
+}
+
+func (j *Journal) LoadFromWeb(url *url.URL) {
+
+}
+
+// best way to do it without breaking SRP
+var lineSeparator = "\n"
+func SaveToFile(j *Journal, filename string) {
+	_ = ioutil.WriteFile(filename, []byte(strings.Join(j.entries, lineSeparator)), 0644)
+}
+
+// make it work across different os
+type Persistance struct {
+	lineseparator string
+}
+
+func (p *Persistance) SaveToFile(j *Journal, filename string) {
+	_ = ioutil.WriteFile(filename, []byte(strings.Join(j.entries, p.lineseparator)), 0644)
 }
 
 
-func main() {
 
+func main() {
+	j := Journal{}
+	j.AddEntry("I am happy.")
+	j.AddEntry("I ate a bug.")
+	fmt.Println(strings.Join(j.entries, "\n"))
+
+	// separate function
+	SaveToFile(&j, "journal.txt")
+
+	// persistance
+	p := Persistance{"\n"}
+	p.SaveToFile(&j, "journal2.txt")
 }
