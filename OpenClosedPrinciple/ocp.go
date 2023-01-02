@@ -93,6 +93,21 @@ func (s SizeSpecification) IsSatisfied(p *Product) bool {
 	return s.size == p.size
 }
 
+// Unlikely to ever modify
+type BetterFilter struct {}
+
+// Filter product based on specification interface
+func (f *BetterFilter) Filter(product []Product, spec Specification) []*Product {
+	result := make([]*Product, 0)
+
+	for i, v := range product {
+		if spec.IsSatisfied(&v) {
+			result = append(result, &product[i])
+		}
+	}
+	return result
+}
+
 func main() {
 	apple := Product{"Apple", green, small}
 	tree := Product{"Tree", green, large}
