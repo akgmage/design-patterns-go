@@ -67,7 +67,11 @@ func (f *Filter) FilterBySizeAndColor(products []Product, size Size, color Color
 
 // Follow OCP, make extendable setup by using Specification pattern
 
-
+// Implement specification interface
+// test whether or not a product specified, satisfies some criteria
+type Specification interface {
+	IsSatisfied(p *Product) bool
+}
 
 
 func main() {
