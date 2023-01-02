@@ -1,3 +1,5 @@
+// Open Closed Principle: Types are open for extension and closed for modification
+
 package main
 
 import "fmt"
@@ -144,6 +146,7 @@ func main() {
 	for _, v := range bf.Filter(products, greenSpec) {
 		fmt.Printf(" - %s is green\n", v.name)
 	}
+
 
 	largeSpec := SizeSpecification{large}
 	lgSpec := AndSpecification{greenSpec, largeSpec}
