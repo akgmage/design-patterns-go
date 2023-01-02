@@ -65,6 +65,11 @@ func (f *Filter) FilterBySizeAndColor(products []Product, size Size, color Color
 	return result
 }
 
+// Follow OCP, make extendable setup by using Specification pattern
+
+
+
+
 func main() {
 	apple := Product{"Apple", green, small}
 	tree := Product{"Tree", green, large}
