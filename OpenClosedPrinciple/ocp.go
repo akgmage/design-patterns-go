@@ -20,3 +20,11 @@ type Product struct {
 	color Color
 	size Size
 }
+
+type Filter struct {
+
+}
+
+func (f * Filter) FilterByColor( products []Product, color Color) []*Product {
+	
+}
