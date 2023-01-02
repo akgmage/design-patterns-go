@@ -68,7 +68,7 @@ func (f *Filter) FilterBySizeAndColor(products []Product, size Size, color Color
 // Follow OCP, make extendable setup by using Specification pattern
 
 // Implement specification interface
-// test whether or not a product specified, satisfies some criteria
+// Test whether or not a product specified, satisfies some criteria
 type Specification interface {
 	IsSatisfied(p *Product) bool
 }
@@ -78,10 +78,17 @@ type ColorSpecification struct {
 	color Color
 }
 
-// check whether or not a product matches a color specification
+// Check whether or not a product matches a color specification
 func (c ColorSpecification) IsSatisfied(p *Product) bool {
 	return p.color == c.color
 }
+
+// To check for size make, SizeSpecification and specify size you want to filter on
+type SizeSpecification struct {
+	size Size
+}
+
+
 
 func main() {
 	apple := Product{"Apple", green, small}
