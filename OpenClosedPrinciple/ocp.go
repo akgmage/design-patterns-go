@@ -51,6 +51,18 @@ func (f *Filter) FilterBySize(products []Product, size Size) []*Product {
 	return result
 }
 
+// Filter by size and color method
+func (f *Filter) FilterBySizeAndColor(products []Product, size Size, color Color) []*Product {
+	result := make([]*Product, 0)
+	
+	for i, v := range products {
+		if v.color == color && v.size == size {
+			result = append(result, &products[i])
+		}
+	}
+	return result
+}
+
 func main() {
 	apple := Product{"Apple", green, small}
 	tree := Product{"Tree", green, large}
