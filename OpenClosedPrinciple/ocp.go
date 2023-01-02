@@ -27,11 +27,24 @@ type Product struct {
 type Filter struct {
 }
 
+// Filter by color
 func (f *Filter) FilterByColor(products []Product, color Color) []*Product {
 	result := make([]*Product, 0)
 
 	for i, v := range products {
 		if v.color == color {
+			result = append(result, &products[i])
+		}
+	}
+	return result
+}
+
+// Filter by size
+func (f *Filter) FilterBySize(products []Product, size Size) []*Product {
+	result := make([]*Product, 0)
+
+	for i, v := range products {
+		if v.size == size {
 			result = append(result, &products[i])
 		}
 	}
