@@ -88,7 +88,10 @@ type SizeSpecification struct {
 	size Size
 }
 
-
+// Check whether or not a product matches a size specification
+func (s SizeSpecification) IsSatisfied(p *Product) bool {
+	return s.size == p.size
+}
 
 func main() {
 	apple := Product{"Apple", green, small}
