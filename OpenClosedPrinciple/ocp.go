@@ -73,6 +73,11 @@ type Specification interface {
 	IsSatisfied(p *Product) bool
 }
 
+// To check for color make, ColorSpecification and specify color you want to filter on
+type ColorSpecification struct {
+	color Color
+}
+
 
 func main() {
 	apple := Product{"Apple", green, small}
