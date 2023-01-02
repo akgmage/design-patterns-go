@@ -1,12 +1,15 @@
 package main
 
-type Color int 
+import "fmt"
+
+type Color int
 
 const (
 	red Color = iota
 	green
-	bluered
+	blue
 )
+
 type Size int
 
 const (
@@ -16,16 +19,15 @@ const (
 )
 
 type Product struct {
-	name string
+	name  string
 	color Color
-	size Size
+	size  Size
 }
 
 type Filter struct {
-
 }
 
-func (f * Filter) FilterByColor( products []Product, color Color) []*Product {
+func (f *Filter) FilterByColor(products []Product, color Color) []*Product {
 	result := make([]*Product, 0)
 
 	for i, v := range products {
@@ -34,4 +36,18 @@ func (f * Filter) FilterByColor( products []Product, color Color) []*Product {
 		}
 	}
 	return result
+}
+
+func main() {
+	apple := Product{"Apple", green, small}
+	tree := Product{"Tree", green, large}
+	house := Product{"House", blue, large}
+
+	products := []Product{apple, tree, house}
+	fmt.Printf("Green products (old) :\n")
+	f := Filter{}
+	for  _, v := range  f.FilterByColor(products, green) {
+		fmt.Printf(" - %s is green\n", v.name)
+	}
+
 }
