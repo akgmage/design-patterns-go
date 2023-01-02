@@ -108,6 +108,17 @@ func (f *BetterFilter) Filter(product []Product, spec Specification) []*Product 
 	return result
 }
 
+// CompositeSpecification type
+type AndSpecification struct {
+	first, second Specification
+}
+
+// CompositeSpecification : Combines two different specification
+func (a AndSpecification) IsSatisfied(p *Product) bool {
+	return a.first.IsSatisfied(p) && a.second.IsSatisfied(p)
+}
+
+
 func main() {
 	apple := Product{"Apple", green, small}
 	tree := Product{"Tree", green, large}
@@ -122,10 +133,22 @@ func main() {
 	
 	// This approach gives more flexibility, because of we want to filter by a paticular new type
 	// all we have to do is make new specification and make sure it confirms to specification interface...
+
+	// The interface types is open for extension (we can implement this interface)
+	// its closed for modification, unlikely to ever modify specification interface
+	// similar fashion unlikely to modify BetterFilter
+
 	fmt.Printf("Green products (new) :\n")
 	greenSpec := ColorSpecification{green}
 	bf := BetterFilter{}
 	for _, v := range bf.Filter(products, greenSpec) {
 		fmt.Printf(" - %s is green\n", v.name)
+	}
+
+	largeSpec := SizeSpecification{large}
+	lgSpec := AndSpecification{greenSpec, largeSpec}
+	fmt.Printf("Large Green products :\n")
+	for _, v := range bf.Filter(products, lgSpec) {
+		fmt.Printf("- %s is large and green\n", v.name)
 	}
 }
