@@ -39,6 +39,7 @@ func (f *Filter) FilterByColor(products []Product, color Color) []*Product {
 	return result
 }
 
+// break open–closed principle (OCP)
 // Filter by size
 func (f *Filter) FilterBySize(products []Product, size Size) []*Product {
 	result := make([]*Product, 0)
@@ -51,6 +52,7 @@ func (f *Filter) FilterBySize(products []Product, size Size) []*Product {
 	return result
 }
 
+// break open–closed principle (OCP)
 // Filter by size and color method
 func (f *Filter) FilterBySizeAndColor(products []Product, size Size, color Color) []*Product {
 	result := make([]*Product, 0)
