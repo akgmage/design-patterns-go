@@ -120,6 +120,8 @@ func main() {
 		fmt.Printf(" - %s is green\n", v.name)
 	}
 	
+	// This approach gives more flexibility, because of we want to filter by a paticular new type
+	// all we have to do is make new specification and make sure it confirms to specification interface...
 	fmt.Printf("Green products (new) :\n")
 	greenSpec := ColorSpecification{green}
 	bf := BetterFilter{}
