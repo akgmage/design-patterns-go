@@ -78,6 +78,10 @@ type ColorSpecification struct {
 	color Color
 }
 
+// check whether or not a product matches a color specification
+func (c ColorSpecification) IsSatisfied(p *Product) bool {
+	return p.color == c.color
+}
 
 func main() {
 	apple := Product{"Apple", green, small}
