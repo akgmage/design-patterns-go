@@ -1,3 +1,7 @@
+// Liskov Substitution Principle
+// It status that if you continue to use generalisations like interfaces
+// then you should not have implementors of those generalizations break some
+// of the assumptions which are set up at the higher level.
 package main
 
 import (
