@@ -81,7 +81,9 @@ type Square2 struct {
 	size int // width, height
 }
 
-
+func (s *Square2) Rectangle() Rectangle {
+	return Rectangle{s.size, s.size}
+}
 
 func main() {
 	rc := &Rectangle{10, 20}
