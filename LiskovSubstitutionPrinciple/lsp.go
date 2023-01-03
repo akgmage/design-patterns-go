@@ -60,6 +60,8 @@ func (s * Square) SetHeight(height int) {
 // we can see how it goes wrong
 func UseIt(sized Sized) {
 	width := sized.GetWidth()
+	// The call to SetHeight actually set not just the height, it also set the width
+	// so the internal width of the square became inconsistent with the value of variable  
 	sized.SetHeight(10)
 	expectedArea := 10 * width
 	actualArea := sized.GetWidth() * sized.GetHeight()
@@ -72,8 +74,9 @@ func main() {
 
 	sq := NewSquare(6)
 	UseIt(sq)
-	
+
 	// Outputs
 	// Expected an area of 100, but got 100
 	// Expected an area of 60, but got 100
+	
 }	
