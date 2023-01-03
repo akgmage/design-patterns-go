@@ -77,6 +77,12 @@ func UseIt(sized Sized) {
 	fmt.Print("Expected an area of ", expectedArea, ", but got ", actualArea, "\n")
 }
 
+type Square2 struct {
+	size int // width, height
+}
+
+
+
 func main() {
 	rc := &Rectangle{10, 20}
 	UseIt(rc)
@@ -87,5 +93,6 @@ func main() {
 	// Outputs
 	// Expected an area of 100, but got 100
 	// Expected an area of 60, but got 100
+
 	
 }	
