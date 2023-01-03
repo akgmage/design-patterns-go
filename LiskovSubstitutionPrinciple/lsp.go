@@ -72,4 +72,8 @@ func main() {
 
 	sq := NewSquare(6)
 	UseIt(sq)
+	
+	// Outputs
+	// Expected an area of 100, but got 100
+	// Expected an area of 60, but got 100
 }	
