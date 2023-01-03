@@ -45,6 +45,7 @@ func NewSquare(size int) *Square {
 	return &sq
 }
 
+// Breaking assumption by setting both width and height 
 // violate LSP
 func (s * Square) SetWidth(width int) {
 	s.width = width
@@ -62,6 +63,9 @@ func (s * Square) SetHeight(height int) {
 // Here we took a rectangle and we decided to sort of extend the rectagle and make it a square
 // it should continue to workbut it doesn't, and if we try to plug in the square 
 // we can see how it goes wrong
+// Assumption : Here we assume that if we have a Sized interface and you set its height
+// then you're just setting its height, not both the height and width
+
 func UseIt(sized Sized) {
 	width := sized.GetWidth()
 	// The call to SetHeight actually set not just the height, it also set the width
