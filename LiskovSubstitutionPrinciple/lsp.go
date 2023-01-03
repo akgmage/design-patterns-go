@@ -41,11 +41,12 @@ func NewSquare(size int) *Square {
 	return &sq
 }
 
+// violate LSP
 func (s * Square) SetWidth(width int) {
 	s.width = width
 	s.height = width
 }
-
+// violate LSP
 func (s * Square) SetHeight(height int) {
 	s.height = height
 	s.width = height
