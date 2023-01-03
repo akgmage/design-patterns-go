@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 type Sized interface {
 	GetWidth() int
 	SetWidth(width int)
@@ -14,7 +18,7 @@ type Rectangle struct {
 func (r *Rectangle) GetWidth() int {
 	return r.width
 }
-func (r *Rectangle) Getwidth(width int) {
+func (r *Rectangle) SetWidth(width int) {
 	r.width = width
 }
 func (r *Rectangle) GetHeight() int {
@@ -24,6 +28,15 @@ func (r *Rectangle) SetHeight(height int) {
 	r.height = height
 }
 
-func main() {
-
+func UseIt(sized Sized) {
+	width := sized.GetWidth()
+	sized.SetHeight(10)
+	expectedArea := 10 * width
+	actualArea := sized.GetWidth() * sized.GetHeight()
+	fmt.Print("Expected an area of ", expectedArea, ", but got ", actualArea, "\n")
 }
+
+func main() {
+	rc := &Rectangle{10, 20}
+	UseIt(rc)
+}	
