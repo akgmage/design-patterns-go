@@ -52,6 +52,12 @@ func (s * Square) SetHeight(height int) {
 	s.width = height
 }
 
+// If you are expecting some sort of something up the hierarchy, in the argument
+// then it should continue to work, even if you proceed to extend objects which 
+// are already Sized.
+// Here we took a rectangle and we decided to sort of extend the rectagle and make it a square
+// it should continue to workbut it doesn't, and if we try to plug in the square 
+// we can see how it goes wrong
 func UseIt(sized Sized) {
 	width := sized.GetWidth()
 	sized.SetHeight(10)
