@@ -1,5 +1,5 @@
 // Liskov Substitution Principle
-// It status that if you continue to use generalisations like interfaces
+// It states that if you continue to use generalization like interfaces
 // then you should not have implementors of those generalizations break some
 // of the assumptions which are set up at the higher level.
 package main
@@ -51,6 +51,7 @@ func (s * Square) SetWidth(width int) {
 	s.width = width
 	s.height = width
 }
+
 // violate LSP
 func (s * Square) SetHeight(height int) {
 	s.height = height
@@ -59,17 +60,17 @@ func (s * Square) SetHeight(height int) {
 
 // If you are expecting some sort of something up the hierarchy, in the argument
 // then it should continue to work, even if you proceed to extend objects which 
-// are already Sized.
-// Here we took a rectangle and we decided to sort of extend the rectagle and make it a square
-// it should continue to workbut it doesn't, and if we try to plug in the square 
+// are already Sized type.
+// Here we took a rectangle and we decided to sort of extend the rectangle and make it a square
+// it should continue to work but it doesn't, and if we try to plug in the square 
 // we can see how it goes wrong
-// Assumption : Here we assume that if we have a Sized interface and you set its height
+// Assumption: Here we assume that if we have a Sized interface and you set its height
 // then you're just setting its height, not both the height and width
 
 func UseIt(sized Sized) {
 	width := sized.GetWidth()
-	// The call to SetHeight actually set not just the height, it also set the width
-	// so the internal width of the square became inconsistent with the value of variable  
+	// The call to SetHeight actually sets not just the height, it also sets the width
+	// so the internal width of the square becomes inconsistent with the value of variable  
 	// As a result we will get different values for expected and actual area
 	sized.SetHeight(10)
 	expectedArea := 10 * width
