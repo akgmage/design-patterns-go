@@ -23,7 +23,11 @@ func (m MultiFunctionPrinter) Fax(d Document) {
 }
 
 func (m MultiFunctionPrinter) Scan(d Document) {
-	
+
+}
+
+type OldFashionPrinter struct {
+
 }
 
 func main() {
