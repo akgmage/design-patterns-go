@@ -93,7 +93,7 @@ func (m MultiFunctionMachine) Print(d Document) {
 }
 
 func (m MultiFunctionMachine) Scan(d Document) {
-
+	m.scanner.Scan(d) // reuse the functionality of printer that you already have
 }
 
 func main() {
