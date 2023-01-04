@@ -6,6 +6,16 @@
 
 package main
 
+type Relationship int
+
+const (
+	Parent Relationship = iota
+	Child
+	Sibling
+)
+
+
+
 func main() {
 
 }
