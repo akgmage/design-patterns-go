@@ -45,6 +45,38 @@ func (o OldFashionPrinter) Scan(d Document) {
 	panic("Operation not supported")
 }
 
+
+// Adhere to ISP  
+// Try to break Interface into separate parts, that people will definitely need
+
+type Printer interface {
+	Print(d Document)
+}
+
+type Scanner interface {
+	Scan(d Document)
+}
+
+type MyPrinter struct {
+
+}
+
+func (m MyPrinter) Print(d Document) {
+
+}
+
+type PhotoCopier struct {
+
+}
+
+func (p PhotoCopier) Print(d Document) {
+
+}
+
+func (p PhotoCopier) Scan(d Document) {
+
+}
+
 func main() {
 
 }
