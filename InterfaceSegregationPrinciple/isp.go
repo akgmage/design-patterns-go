@@ -1,3 +1,6 @@
+// Interface Segregation Principle
+// In the field of software engineering, the interface segregation principle (ISP) states that no code should be forced to depend on methods it does not use.
+// Source (https://en.wikipedia.org/wiki/Interface_segregation_principle)
 package main
 
 type Document struct {
@@ -85,6 +88,9 @@ type MultiFunctionDevice interface {
 	Scanner
 }
 
+// Combining the Interfaces 
+// here we combine Printer and Scanner and have a kind of interface aggregrate
+// and we can subsequently have API's which actyually use this interface aggregrate in our code
 type MultiFunctionMachine struct {
 	printer Printer
 	scanner Scanner
