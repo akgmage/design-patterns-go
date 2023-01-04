@@ -48,7 +48,9 @@ func (o OldFashionPrinter) Scan(d Document) {
 
 // Adhere to ISP  
 // Try to break Interface into separate parts, that people will definitely need
-
+// Here we have  very granular kind of definitions
+// Just grab the interface you need and you dont have any extra members in those interfaces
+// For example if you're building an ordinary printer, just get the print method
 type Printer interface {
 	Print(d Document)
 }
