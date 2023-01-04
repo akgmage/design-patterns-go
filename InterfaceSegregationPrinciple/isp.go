@@ -89,7 +89,7 @@ type MultiFunctionMachine struct {
 }
 
 func (m MultiFunctionMachine) Print(d Document) {
-
+	m.printer.Print(d) // reuse the functionality of printer that you already have
 }
 
 func (m MultiFunctionMachine) Scan(d Document) {
