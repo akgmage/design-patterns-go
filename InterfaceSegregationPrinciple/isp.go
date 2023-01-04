@@ -83,6 +83,19 @@ type MultiFunctionDevice interface {
 	Scanner
 }
 
+type MultiFunctionMachine struct {
+	printer Printer
+	scanner Scanner
+}
+
+func (m MultiFunctionMachine) Print(d Document) {
+
+}
+
+func (m MultiFunctionMachine) Scan(d Document) {
+
+}
+
 func main() {
 
 }
