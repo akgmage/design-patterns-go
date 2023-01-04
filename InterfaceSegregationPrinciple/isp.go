@@ -30,6 +30,19 @@ type OldFashionPrinter struct {
 
 }
 
-func main() {
+func (o OldFashionPrinter) Print(d Document) {
+
+}
+
+func (o OldFashionPrinter) Fax(d Document) {
+
+}
+
+func (o OldFashionPrinter) Scan(d Document) {
+
+}
+
+func
+ main() {
 
 }
