@@ -14,6 +14,18 @@ const (
 	Sibling
 )
 
+type Person struct {
+	name string
+}
+
+// Infrastructure  to have some sort of relationships
+// For example: A is the parent of B
+type Info struct {
+	from *Person
+	relationship Relationship
+	to *Person
+}
+
 
 
 func main() {
