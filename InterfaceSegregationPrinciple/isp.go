@@ -77,6 +77,12 @@ func (p PhotoCopier) Scan(d Document) {
 
 }
 
+
+type MultiFunctionDevice interface {
+	Printer
+	Scanner
+}
+
 func main() {
 
 }
