@@ -45,6 +45,7 @@ type Relationships struct {
 // Implement relationship browser interface
 // we can depend upon the internal mechanics of how we would go about
 // accessing low level storage 
+// All the finding of children is put into low level module
 func (r *Relationships) FindAllChildrenOf(name string) []*Person {
 	result := make([]*Person, 0) // empty slice of person pointers
 	for i, v := range r.relations {
@@ -67,7 +68,7 @@ type Research struct {
 	// Break DIP
 	// dependency doesn't have to be on a low level module directly
 	// relationships Relationships 
-	browser RelationshipBrowser // Depend on abstraction
+	browser RelationshipBrowser // Depends on abstraction
 }
 
 // perform research
@@ -78,6 +79,7 @@ func (r *Research) Investigate() {
 	// 		fmt.Println("John has a child called ", rel.to.name)
 	// 	}
 	// }
+	// using interface member we find all children
 	for _, p := range r.browser.FindAllChildrenOf("John") {
 		fmt.Println("John has a child called", p.name)
 	}
