@@ -46,9 +46,10 @@ type Relationships struct {
 // we can depend upon the internal mechanics of how we would go about
 // accessing low level storage 
 func (r *Relationships) FindAllChildrenOf(name string) []*Person {
-	result := make([]*Person, 0)
+	result := make([]*Person, 0) // empty slice of person pointers
 	for i, v := range r.relations {
 		if v.relationship == Parent && v.from.name == name {
+			// return pointer to child
 			result = append(result, r.relations[i].to)
 		}
 	}
