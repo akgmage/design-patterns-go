@@ -71,7 +71,9 @@ func (r *Research) Investigate() {
 	// 		fmt.Println("John has a child called ", rel.to.name)
 	// 	}
 	// }
-
+	for _, p := range r.browser.FindAllChildrenOf("John") {
+		fmt.Println("John has a child called", p.name)
+	}
 }
 
 func main() {
@@ -81,6 +83,6 @@ func main() {
 	relationships := Relationships{}
 	relationships.AddParentAndChild(&parent, &child1) 
 	relationships.AddParentAndChild(&parent, &child2)
-	r := Research{relationships}
+	r := Research{&relationships}
 	r.Investigate()
 }
