@@ -30,9 +30,11 @@ type Info struct {
 // have all data about the relationship between different people stored
 // in some sort of type 
 type Relationships struct {
-	relatios []Info
+	relations []Info
 }
 
+func (r Relationships) AddParentAndChild(parent , child *Person) {
+}
 
 func main() {
 
