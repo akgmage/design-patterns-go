@@ -49,6 +49,14 @@ type Research struct {
 }
 
 
+func (r *Research) Investigate() {
+	relations := r.relationships.relations
+	for _, rel := range relations {
+		if rel.from.name == "John" && rel.relationship == Parent {
+			fmt.Println("John has a chil;d called ", rel.to.name)
+		}
+	}
+}
 
 func main() {
 
