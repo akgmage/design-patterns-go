@@ -19,13 +19,19 @@ type Person struct {
 }
 
 // Infrastructure  to have some sort of relationships
-// For example: A is the parent of B
+// For example: A is the Parent of B
 type Info struct {
 	from *Person
 	relationship Relationship
 	to *Person
 }
 
+// store above information
+// have all data about the relationship between different people stored
+// in some sort of type 
+type Relationships struct {
+	relatios []Info
+}
 
 
 func main() {
