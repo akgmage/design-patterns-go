@@ -92,6 +92,6 @@ func main() {
 	relationships := Relationships{}
 	relationships.AddParentAndChild(&parent, &child1) 
 	relationships.AddParentAndChild(&parent, &child2)
-	r := Research{&relationships}
+	r := Research{&relationships} // research depends on relationships as an interface
 	r.Investigate()
 }
