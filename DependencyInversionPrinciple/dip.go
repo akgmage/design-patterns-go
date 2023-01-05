@@ -34,6 +34,8 @@ type Relationships struct {
 }
 
 func (r Relationships) AddParentAndChild(parent , child *Person) {
+	r.relations = append(r.relations, Info{parent, Parent, child})
+	r.relations = append(r.relations, Info{child, Child, parent})
 }
 
 func main() {
