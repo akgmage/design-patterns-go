@@ -28,6 +28,7 @@ type Info struct {
 	to *Person
 }
 
+// Implement this interface on relationships
 type RelationshipBrowser interface {
 	FindAllChildrenOf(name string) []*Person
 }
@@ -59,8 +60,9 @@ func (r *Relationships) AddParentAndChild(parent , child *Person) {
 // high-level module
 type Research struct {
 	// Break DIP
-	// relationships Relationships
-	browser RelationshipBrowser
+	// dependency doesn't have to be on a low level module directly
+	// relationships Relationships 
+	browser RelationshipBrowser // Depend on abstraction
 }
 
 // perform research
