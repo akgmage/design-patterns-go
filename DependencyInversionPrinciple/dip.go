@@ -28,12 +28,13 @@ type Info struct {
 	to *Person
 }
 
+// low-level module
 // Implement this interface on relationships
 type RelationshipBrowser interface {
 	FindAllChildrenOf(name string) []*Person
 }
 
-// low-level module
+
 // store above information
 // have all data about the relationship between different people stored
 // in some sort of type 
@@ -41,6 +42,9 @@ type Relationships struct {
 	relations []Info
 }
 
+// Implement relationship browser interface
+// we can depend upon the internal mechanics of how we would go about
+// accessing low level storage 
 func (r *Relationships) FindAllChildrenOf(name string) []*Person {
 	result := make([]*Person, 0)
 	for i, v := range r.relations {
