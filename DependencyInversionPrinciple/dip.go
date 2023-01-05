@@ -28,12 +28,26 @@ type Info struct {
 	to *Person
 }
 
+type RelationshipBrowser interface {
+	FindAllChildrenOf(name string) []*Person
+}
+
 // low-level module
 // store above information
 // have all data about the relationship between different people stored
 // in some sort of type 
 type Relationships struct {
 	relations []Info
+}
+
+func (r *Relationships) FindAllChildrenOf(name string) []*Person {
+	result := make([]*Person, 0)
+	for i, v := range r.relations {
+		if v.relationship == Parent && v.from.name == name {
+			result = append(result, r.relations[i].to)
+		}
+	}
+	return result
 }
 
 // Add relationships
@@ -45,17 +59,19 @@ func (r *Relationships) AddParentAndChild(parent , child *Person) {
 // high-level module
 type Research struct {
 	// Break DIP
-	relationships Relationships
+	// relationships Relationships
+	browser RelationshipBrowser
 }
 
 // perform research
 func (r *Research) Investigate() {
-	relations := r.relationships.relations
-	for _, rel := range relations {
-		if rel.from.name == "John" && rel.relationship == Parent {
-			fmt.Println("John has a child called ", rel.to.name)
-		}
-	}
+	// relations := r.relationships.relations
+	// for _, rel := range relations {
+	// 	if rel.from.name == "John" && rel.relationship == Parent {
+	// 		fmt.Println("John has a child called ", rel.to.name)
+	// 	}
+	// }
+
 }
 
 func main() {
