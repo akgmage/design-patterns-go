@@ -37,7 +37,7 @@ type Relationships struct {
 }
 
 // Add relationships
-func (r Relationships) AddParentAndChild(parent , child *Person) {
+func (r *Relationships) AddParentAndChild(parent , child *Person) {
 	r.relations = append(r.relations, Info{parent, Parent, child})
 	r.relations = append(r.relations, Info{child, Child, parent})
 }
@@ -48,16 +48,23 @@ type Research struct {
 	relationships Relationships
 }
 
-
+// perform research
 func (r *Research) Investigate() {
 	relations := r.relationships.relations
 	for _, rel := range relations {
 		if rel.from.name == "John" && rel.relationship == Parent {
-			fmt.Println("John has a chil;d called ", rel.to.name)
+			fmt.Println("John has a child called ", rel.to.name)
 		}
 	}
 }
 
 func main() {
-
+	parent := Person{"John"}
+	child1 := Person{"Chris"}
+	child2 := Person{"Matt"}
+	relationships := Relationships{}
+	relationships.AddParentAndChild(&parent, &child1) 
+	relationships.AddParentAndChild(&parent, &child2)
+	r := Research{relationships}
+	r.Investigate()
 }
