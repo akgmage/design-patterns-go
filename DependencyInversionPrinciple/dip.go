@@ -6,6 +6,8 @@
 
 package main
 
+import "fmt"
+
 type Relationship int
 
 const (
@@ -26,6 +28,7 @@ type Info struct {
 	to *Person
 }
 
+// low-level module
 // store above information
 // have all data about the relationship between different people stored
 // in some sort of type 
@@ -33,10 +36,19 @@ type Relationships struct {
 	relations []Info
 }
 
+// Add relationships
 func (r Relationships) AddParentAndChild(parent , child *Person) {
 	r.relations = append(r.relations, Info{parent, Parent, child})
 	r.relations = append(r.relations, Info{child, Child, parent})
 }
+
+// high-level module
+type Research struct {
+	// Break DIP
+	relationships Relationships
+}
+
+
 
 func main() {
 
