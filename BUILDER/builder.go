@@ -18,6 +18,18 @@ func main () {
 	sb := strings.Builder{}
 	sb.WriteString("<h1>")
 	sb.WriteString(text)
-	sb.WriteString("<h1>")
+	sb.WriteString("</h1>")
+	fmt.Println(sb.String())
+
+	words := []string{"hello", "go"}
+	sb.Reset()
+	// <ul><li>..</li><li>..</li></ul>
+	sb.WriteString("<ul>")
+	for _, v := range words {
+		sb.WriteString("<li>")
+		sb.WriteString(v)
+		sb.WriteString("</li>")
+	}
+	sb.WriteString("</ul>")
 	fmt.Println(sb.String())
 }
