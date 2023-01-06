@@ -53,7 +53,7 @@ func NewHtmlBuilder(rootName string) *HtmlBuilder {
 
 // have string representaion for builder 
 func (b *HtmlBuilder) String() string {
-	return b.root.string()
+	return b.root.String()
 }
 
 // method for adding a child
