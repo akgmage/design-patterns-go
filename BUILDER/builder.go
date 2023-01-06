@@ -51,6 +51,11 @@ func NewHtmlBuilder(rootName string) *HtmlBuilder {
 	return &HtmlBuilder{rootName, HtmlElement{rootName, "", []HtmlElement{}}}
 }
 
+// have string representaion for builder 
+func (b *HtmlBuilder) String() string {
+	return b.root.string()
+}
+
 
 func main () {
 	text := "Hello"
