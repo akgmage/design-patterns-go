@@ -47,6 +47,11 @@ type HtmlBuilder struct {
 	root HtmlElement
 }
 
+func NewHtmlBuilder(rootName string) *HtmlBuilder {
+	return &HtmlBuilder{rootName, HtmlElement{rootName, "", []HtmlElement{}}}
+}
+
+
 func main () {
 	text := "Hello"
 	sb := strings.Builder{}
