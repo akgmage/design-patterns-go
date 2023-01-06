@@ -28,7 +28,7 @@ func (e *HtmlElement) String() string {
 func (e *HtmlElement) string(indent int) string {
 	sb := strings.Builder{}
 	i := strings.Repeat(" ", indentSize * indent)
-	sb.WriteString(fmt.Sprintf("%s%s\n", i, e.name))
+	sb.WriteString(fmt.Sprintf("%s<%s>\n", i, e.name))
 	if len(e.text) > 0 {
 		sb.WriteString(strings.Repeat(" ", indentSize * (indent + 1)))
 		sb.WriteString(e.text)
@@ -38,7 +38,7 @@ func (e *HtmlElement) string(indent int) string {
 	for _, el := range e.elements {
 		sb.WriteString(el.string(indent + 1))
 	}
-	sb.WriteString(fmt.Sprintf("%s%s\n", i, e.name))
+	sb.WriteString(fmt.Sprintf("%s</%s>\n", i, e.name))
 	return sb.String()
 }
 
@@ -81,4 +81,10 @@ func main () {
 	}
 	sb.WriteString("</ul>")
 	fmt.Println(sb.String())
+
+	b := NewHtmlBuilder("ul")
+	b.AddChild("li", "hello")
+	b.AddChild("li", "go")
+	b.AddChild("li", "haha")
+	fmt.Println(b.String())
 }
