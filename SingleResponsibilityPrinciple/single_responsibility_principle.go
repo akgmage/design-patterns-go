@@ -1,3 +1,6 @@
+// Single Responsibility Principle
+// A type should have only one reason to change
+// Separation of concerns - different types/packages handling different, independent tasks/problems
 package main
 
 import (
