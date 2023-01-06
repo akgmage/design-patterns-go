@@ -13,6 +13,9 @@ import (
 	"strings"
 )
 
+const (
+	indentSize = 2
+)
 type HtmlElement struct {
 	name, text string
 	elements []HtmlElement
