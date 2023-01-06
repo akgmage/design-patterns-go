@@ -69,7 +69,7 @@ func main () {
 	sb.WriteString(text)
 	sb.WriteString("</h1>")
 	fmt.Println(sb.String())
-
+	// Prints <h1>Hello</h1>
 	words := []string{"hello", "go"}
 	sb.Reset()
 	// <ul><li>..</li><li>..</li></ul>
@@ -81,10 +81,23 @@ func main () {
 	}
 	sb.WriteString("</ul>")
 	fmt.Println(sb.String())
-
+	// Prints <ul><li>hello</li><li>go</li></ul>
 	b := NewHtmlBuilder("ul")
 	b.AddChild("li", "hello")
 	b.AddChild("li", "go")
 	b.AddChild("li", "haha")
 	fmt.Println(b.String())
+	/* Prints
+	<ul>
+		<li>
+			hello
+		</li>
+		<li>
+			go
+		</li>
+		<li>
+			haha
+		</li>
+	</ul>
+	*/
 }
