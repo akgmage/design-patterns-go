@@ -8,6 +8,16 @@
 
 package main
 
+import (
+	"fmt"
+	"strings"
+)
+
 func main () {
-	
+	text := "Hello"
+	sb := strings.Builder{}
+	sb.WriteString("<h1>")
+	sb.WriteString(text)
+	sb.WriteString("<h1>")
+	fmt.Println(sb.String())
 }
