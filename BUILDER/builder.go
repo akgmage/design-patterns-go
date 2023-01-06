@@ -56,6 +56,11 @@ func (b *HtmlBuilder) String() string {
 	return b.root.string()
 }
 
+// method for adding a child
+func (b *HtmlBuilder) AddChild(childName, childText string) {
+	e := HtmlElement{childName, childText, []HtmlElement{}}
+	b.root.elements = append(b.root.elements, e)
+}
 
 func main () {
 	text := "Hello"
