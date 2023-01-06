@@ -42,6 +42,10 @@ func (e *HtmlElement) string(indent int) string {
 	return sb.String()
 }
 
+type HtmlBuilder struct {
+	rootName string
+	root HtmlElement
+}
 
 func main () {
 	text := "Hello"
