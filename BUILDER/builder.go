@@ -13,6 +13,11 @@ import (
 	"strings"
 )
 
+type HtmlElement struct {
+	name, text string
+	elements []HtmlElement
+}
+
 func main () {
 	text := "Hello"
 	sb := strings.Builder{}
